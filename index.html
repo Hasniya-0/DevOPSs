@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Planner</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🌟 Daily Planner</h1>
+  <div class="nav">
+    <button onclick="showTab('calendar')">Calendar</button>
+    <button onclick="showTab('tasks')">Tasks</button>
+    <button onclick="showTab('settings')">Settings</button>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Calendar -->
+  <div id="calendar" class="card"></div>
+
+  <!-- Tasks -->
+  <div id="tasks" class="card hidden">
+    <h2>📝 Tasks for <span id="selectedDateText">Today</span></h2>
+    <input id="taskInput" placeholder="New Task">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+  </div>
+
+  <!-- Settings -->
+  <div id="settings" class="card hidden">
+    <h2>⚙️ Settings</h2>
+    Theme Color: <input type="color" onchange="changeColor(this.value)" value="#6b4eff">
+    <button onclick="resetAllTasks()">Reset All Tasks</button>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
