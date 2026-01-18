@@ -1,12 +1,21 @@
-name: Deploy
+name: Deploy to Vercel
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main  # deploy on push to main branch
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    
     steps:
-    - uses: actions/checkout@v3
-    - run: echo "Ready for deployment"
+      - uses: actions/checkout@v3
+      
+      - name: Install Vercel CLI
+        run: npm i -g vercel
+      
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}   # <- use GitHub secret
+        run: vercel --prod --token $VERCEL_TOKEN --confirm
